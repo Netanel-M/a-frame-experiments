@@ -9,6 +9,11 @@ AFRAME.registerComponent('fall', {
     },
   
     tick: function (time, timeDelta) {
+      // Check if velocity is set.
+      if (!this.el.getAttribute('velocity')) {
+        return;
+      }
+  
       var velocity = this.el.getAttribute('velocity');
       
       // Apply gravity acceleration.
