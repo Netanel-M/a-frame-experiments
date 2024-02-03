@@ -5,6 +5,7 @@ AFRAME.registerComponent('fall', {
   
     init: function () {
       // Set initial velocity to 0.
+      console.log(0);
       this.el.setAttribute('velocity', {x: 0, y: 0, z: 0});
     },
   
