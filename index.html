@@ -7,10 +7,11 @@
 <body>
     <a-scene physics="gravity: -9.8" xr-mode-ui="XRMode: xr; requiredFeatures: hit-test,local-floor">
     <!-- Style the button with images or whatever. -->
-    <a-box position="-0.3 0.25 -1" width="0.5" height="0.5" depth="0.5" rotation="0 45 0" color="#4CC3D9"></a-box>
-    <a-sphere dynamic-body position="-1.5 1 -1" radius="0.2" color="#EF2D5E"></a-sphere>
-    <a-cylinder position="1 0.85 -1" radius="0.2" height="1.7" color="#FFC65D"></a-cylinder>
+    <a-box grabbable position="-0.3 0.25 -1" width="0.5" height="0.5" depth="0.5" rotation="0 45 0" color="#4CC3D9"></a-box>
+    <a-sphere grabbable dynamic-body position="-1.5 1 -1" radius="0.2" color="#EF2D5E"></a-sphere>
+    <a-cylinder grabbable  position="1 0.85 -1" radius="0.2" height="1.7" color="#FFC65D"></a-cylinder>
     <a-plane static-body height="100" width="100" rotation="-90 0 0" opacity="0.0"></a-plane>
-    </a-scene>
+    <a-entity id="leftHand" hand-tracking-grab-controls="hand: left;"></a-entity>
+    <a-entity id="rightHand" hand-tracking-grab-controls="hand: right;"></a-entity>    </a-scene>
 </body>
 </html>
