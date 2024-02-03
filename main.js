@@ -3,6 +3,11 @@ AFRAME.registerComponent('fall', {
       speed: {type: 'number', default: -9.8}
     },
   
+    init: function () {
+      // Set initial velocity to 0.
+      this.el.setAttribute('velocity', {x: 0, y: 0, z: 0});
+    },
+  
     tick: function (time, timeDelta) {
       var velocity = this.el.getAttribute('velocity');
       
@@ -19,4 +24,4 @@ AFRAME.registerComponent('fall', {
       // Update the entity's velocity.
       this.el.setAttribute('velocity', velocity);
     }
-  });
+});
