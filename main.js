@@ -4,6 +4,7 @@ AFRAME.registerComponent('fall', {
     },
   
     init: function () {
+        console.log("initializing");
       // Set initial velocity to 0.
       this.el.setAttribute('velocity', {x: 0, y: 0, z: 0});
       
@@ -12,33 +13,34 @@ AFRAME.registerComponent('fall', {
       
       // Listen for collisions.
       var self = this; // Reference to the component.
-      this.el.addEventListener('collisions', function (e) {
+      this.el.addEventListener('obbcollisionstarted', function (e) {
         // Get the entities that are currently in collision.
-        var collidedEntities = e.detail.els;
-        
-        // If there are collided entities, set isColliding to true.
-        if (collidedEntities.length) {
           self.isColliding = true;
-        } else {
+      });
+      this.el.addEventListener('obbcollisionended', function (e) {
+        // Get the entities that are currently in collision.
           self.isColliding = false;
-        }
       });
     },
   
     tick: function (time, timeDelta) {
       // Check if velocity is set.
+      console.log("tick");
       if (!this.el.getAttribute('velocity')) {
+        console.log("no velocity");
         return;
       }
   
       var velocity = this.el.getAttribute('velocity');
-      
+      var position = this.el.getAttribute('position');
+
       // Apply gravity acceleration if not colliding.
       if (!this.isColliding) {
-        velocity.y += this.data.speed * timeDelta / 1000;
+        velocity.y = 0.01; 
+        position.y -= 0.01;
       } else {
         // If the entity is colliding with something, stop it.
-        velocity.y = 0;
+        console.log("collision");
       }
   
       // Update the entity's velocity.
