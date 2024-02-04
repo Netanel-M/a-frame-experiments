@@ -6,7 +6,7 @@
 </head>
 <body>
     <a-scene 
-        real-world-meshing="filterLabels: other; meshesEnabled: true; meshMixin: xrplane"
+        real-world-meshing="meshMixin: xrplane"
         obb-collider="showColliders: false"
         xr-mode-ui="XRMode: ar;" 
         webxr="requiredFeatures: hit-test,plane-detection,local-floor;">
@@ -16,7 +16,7 @@
           id="xrplane"
           obb-collider
           material="color: pink"
-          visible="true">
+          visible="false">
         </a-mixin>
     </a-assets>
     <a-box obb-collider fall grabbable  position="-0.3 0.25 -1" width="0.5" height="0.5" depth="0.5" rotation="0 45 0" color="#4CC3D9"></a-box>
