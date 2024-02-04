@@ -48,8 +48,9 @@ AFRAME.registerComponent('fall', {
     }
 });
 
-// Wait for the scene to load
-document.querySelector('a-scene').addEventListener('loaded', function () {
+
+// Function to hide all meshes
+function hideMeshes() {
     // Select the entities created by the real-world-meshing component
     var entities = document.querySelectorAll('[data-world-mesh]');
   
@@ -57,5 +58,16 @@ document.querySelector('a-scene').addEventListener('loaded', function () {
     entities.forEach(function(entity) {
       entity.setAttribute('visible', false);
     });
+  }
+  
+// Wait for the scene to load
+document.querySelector('a-scene').addEventListener('loaded', function () {
+      
+  // Hide existing meshes
+  hideMeshes();
+  
+  // Set an interval to hide new meshes
+  setInterval(hideMeshes, 1000);  // Check every second
+
   });
   
