@@ -47,3 +47,15 @@ AFRAME.registerComponent('fall', {
       this.el.setAttribute('velocity', velocity);
     }
 });
+
+// Wait for the scene to load
+document.querySelector('a-scene').addEventListener('loaded', function () {
+    // Select the entities created by the real-world-meshing component
+    var entities = document.querySelectorAll('[real-world-meshing]');
+  
+    // Loop through the entities and set their visible attribute to false
+    entities.forEach(function(entity) {
+      entity.setAttribute('visible', false);
+    });
+  });
+  
