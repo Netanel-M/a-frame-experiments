@@ -8,7 +8,7 @@
     <a-scene real-world-meshing="meshMixin: obb-collider" xr-mode-ui="XRMode: ar;" webxr="requiredFeatures: hit-test,plane-detection,local-floor;">
   
     <a-assets>
-        <a-mixin id="obb-collider" obb-collider></a-mixin>
+        <a-mixin id="obb-collider" obb-collider="showColliders: true"></a-mixin>
         </a-assets>
     <a-box obb-collider grabbable  position="-0.3 0.25 -1" width="0.5" height="0.5" depth="0.5" rotation="0 45 0" color="#4CC3D9"></a-box>
     <a-sphere  obb-collider fall grabbable  position="0 5 0" radius="0.2" color="#EF2D5E"></a-sphere>
