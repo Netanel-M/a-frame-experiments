@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-aabb-collider-component@3.2.2/dist/aframe-aabb-collider-component.min.js"></script>
     <script src="./main.js"></script>
 </head>
 <body>
@@ -19,10 +20,10 @@
           visible="false">
         </a-mixin>
     </a-assets>
-    <a-box obb-collider fall grabbable  position="-0.3 0.25 -1" width="0.5" height="0.5" depth="0.5" rotation="0 45 0" color="#4CC3D9"></a-box>
-    <a-sphere  obb-collider fall grabbable  position="0 5 0" radius="0.2" color="#EF2D5E"></a-sphere>
-    <a-cylinder obb-collider fall grabbable   position="1 0.85 -1" radius="0.2" height="1.7" color="#FFC65D"></a-cylinder>
-    <a-plane  obb-collider height="100" width="100" rotation="-90 0 0" opacity="0.0"></a-plane>
+    <a-box aabb-collider fall grabbable  position="-0.3 0.25 -1" width="0.5" height="0.5" depth="0.5" rotation="0 45 0" color="#4CC3D9"></a-box>
+    <a-sphere  aabb-collider fall grabbable  position="0 5 0" radius="0.2" color="#EF2D5E"></a-sphere>
+    <a-cylinder aabb-collider fall grabbable   position="1 0.85 -1" radius="0.2" height="1.7" color="#FFC65D"></a-cylinder>
+    <a-plane  aabb-collider height="100" width="100" rotation="-90 0 0" opacity="0.0"></a-plane>
     <a-entity   id="leftHand" hand-tracking-grab-controls="hand: left;"></a-entity>
     <a-entity  id="rightHand" hand-tracking-grab-controls="hand: right;"></a-entity>    
 </a-scene>

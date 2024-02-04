@@ -13,11 +13,11 @@ AFRAME.registerComponent('fall', {
       
       // Listen for collisions.
       var self = this; // Reference to the component.
-      this.el.addEventListener('obbcollisionstarted', function (e) {
+      this.el.addEventListener('hitstart', function (e) {
         // Get the entities that are currently in collision.
           self.isColliding = true;
       });
-      this.el.addEventListener('obbcollisionended', function (e) {
+      this.el.addEventListener('hitend', function (e) {
         // Get the entities that are currently in collision.
           self.isColliding = false;
       });
