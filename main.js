@@ -74,7 +74,9 @@ AFRAME.registerComponent('fall', {
 AFRAME.registerComponent('plane-follower', {
   tick: function (t, dt) {
       const handPosition = document.querySelector('#leftHand').object3D.mesh;
+      console.log(document.querySelector('#leftHand').object3D);
       if (handPosition == undefined) {
+        console.log(handPosition);
         return;
       }
     console.log(handPosition.position);
