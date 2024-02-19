@@ -11,7 +11,7 @@
         webxr="requiredFeatures: hit-test,plane-detection,local-floor;"
         renderer="colorManagement: true;">
     <a-camera>
-        <a-entity id="raycaster" raycaster cursor="fuse: true; fuseTimeout: 500"></a-entity>
+        <a-entity raycaster-listener id="raycaster" raycaster cursor="fuse: true; fuseTimeout: 500"></a-entity>
     </a-camera>
     <a-plane color="beige" height="5" width="5" position="0 0.2 0" rotation="-90 0 0"></a-plane>
 

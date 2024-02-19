@@ -81,23 +81,28 @@ AFRAME.registerComponent('plane-follower', {
   }
 });
 
-document.querySelector('a-scene').addEventListener('loaded', () => {
-  const raycaster = document.getElementById('raycaster');
+AFRAME.registerComponent('plane-follower', {
+  init: function () {
+    const handPosition = document.querySelector('#leftHand').object3D.position;
+    const planePosition = this.el.object3D.position;
+    planePosition.copy(handPosition); // Use this line to place the plane directly on the hand
+    // Or adjust slightly: 
+    planePosition.x = handPosition.x; planePosition.y = handPosition.y + 0.1; planePosition.z = handPosition.z;
+  }
+});
 
-  // Attach event listeners and access elements now that the scene is loaded
-  raycaster.addEventListener('raycaster-intersection', (event) => {
-  // If the intersected object is the plane
-  if (event.detail.intersectedEntity.id === 'plane') {
-    // Change the plane's color
-    event.detail.intersectedEntity.setAttribute('material', 'color', 'blue'); // Change to your desired color
-    }
-  });
+AFRAME.registerComponent('raycaster-listener', {
+  init: function () {
+    const raycaster = this.el; // Access raycaster element directly within the component
 
-  // Optional: add listener for intersection cleared
-  raycaster.addEventListener('raycaster-intersection-cleared', (event) => {
-    document.getElementById('raycaster').addEventListener('raycaster-intersection-cleared', () => {
-      event.detail.intersectedEntity.setAttribute('material', 'color', 'red'); // Change to your desired color
+    raycaster.addEventListener('raycaster-intersection', (event) => {
+      if (event.detail.intersectedEntity.id === 'plane') {
+        event.detail.intersectedEntity.setAttribute('material', 'color', 'blue');
+      }
     });
-    
-  });
+
+    raycaster.addEventListener('raycaster-intersection-cleared', (event) => {
+      event.detail.intersectedEntity.setAttribute('material', 'color', 'red');
+    });
+  }
 });
