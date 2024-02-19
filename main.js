@@ -71,3 +71,23 @@ AFRAME.registerComponent('fall', {
 
 //   });
   
+document.querySelector('a-scene').addEventListener('loaded', () => {
+  const raycaster = document.getElementById('raycaster');
+
+  // Attach event listeners and access elements now that the scene is loaded
+  raycaster.addEventListener('raycaster-intersection', (event) => {
+  // If the intersected object is the plane
+  if (event.detail.intersectedEntity.id === 'plane') {
+    // Change the plane's color
+    event.detail.intersectedEntity.setAttribute('material', 'color', 'blue'); // Change to your desired color
+    }
+  });
+
+  // Optional: add listener for intersection cleared
+  raycaster.addEventListener('raycaster-intersection-cleared', (event) => {
+    document.getElementById('raycaster').addEventListener('raycaster-intersection-cleared', () => {
+      event.detail.intersectedEntity.setAttribute('material', 'color', 'red'); // Change to your desired color
+    });
+    
+  });
+});
