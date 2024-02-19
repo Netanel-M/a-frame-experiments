@@ -74,6 +74,8 @@ AFRAME.registerComponent('fall', {
 AFRAME.registerComponent('plane-follower', {
   tick: function (t, dt) {
       const handPosition = document.querySelector('#leftHand').object3D.children[0];
+      console.log( document.querySelector('#leftHand').object3D.children);
+    
     console.log(handPosition.position);
     const planePosition = this.el.object3D.position;
     planePosition.copy(handPosition); // Use this line to place the plane directly on the hand
