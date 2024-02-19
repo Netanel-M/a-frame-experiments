@@ -78,7 +78,7 @@ AFRAME.registerComponent('plane-follower', {
     const planePosition = this.el.object3D.position;
     planePosition.copy(handPosition); // Use this line to place the plane directly on the hand
     // Or adjust slightly: 
-    planePosition.x = handPosition.x; planePosition.y = handPosition.y + 0.1; planePosition.z = handPosition.z;
+    planePosition.y += 0.2;
   }
 });
 
