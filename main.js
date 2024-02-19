@@ -70,7 +70,17 @@ AFRAME.registerComponent('fall', {
 //   setInterval(hideMeshes, 1000);  // Check every second
 
 //   });
-  
+
+AFRAME.registerComponent('plane-follower', {
+  tick: function (t, dt) {
+    const handPosition = document.querySelector('#leftHand').object3D.position;
+    const planePosition = this.el.object3D.position;
+    planePosition.copy(handPosition); // Use this line to place the plane directly on the hand
+    // Or adjust slightly: 
+    planePosition.x = handPosition.x; planePosition.y = handPosition.y + 0.1; planePosition.z = handPosition.z;
+  }
+});
+
 document.querySelector('a-scene').addEventListener('loaded', () => {
   const raycaster = document.getElementById('raycaster');
 
