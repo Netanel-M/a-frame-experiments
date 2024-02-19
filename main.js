@@ -76,7 +76,7 @@ AFRAME.registerComponent('plane-follower', {
       const handPosition = document.querySelector('#leftHand').object3D.children[0];
       console.log( document.querySelector('#leftHand').object3D.children);
     
-    console.log(handPosition.children[0].position);
+    console.log(this.el);
     const planePosition = this.el.object3D.position;
     planePosition.copy(handPosition); // Use this line to place the plane directly on the hand
     // Or adjust slightly: 
