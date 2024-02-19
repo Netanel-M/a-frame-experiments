@@ -87,12 +87,14 @@ AFRAME.registerComponent('raycaster-listener', {
     const raycaster = this.el; // Access raycaster element directly within the component
 
     raycaster.addEventListener('raycaster-intersection', (event) => {
+      console.log(event);
       if (event.detail.intersectedEntity.id === 'plane') {
         event.detail.intersectedEntity.setAttribute('material', 'color', 'blue');
       }
     });
 
     raycaster.addEventListener('raycaster-intersection-cleared', (event) => {
+      console.log(event);
       event.detail.intersectedEntity.setAttribute('material', 'color', 'red');
     });
   }
