@@ -82,19 +82,14 @@ AFRAME.registerComponent('plane-follower', {
         const scene = document.querySelector("a-scene")
         // Convert wrist position from world space to the scene root's local space
         const wristLocalPosition = new THREE.Vector3();
-        wristObject3D.worldToLocal(wristLocalPosition);
-        
-        // Convert wrist position from scene root's local space to world space
-        const wristWorldPosition = new THREE.Vector3();
-        scene.object3D.localToWorld(wristLocalPosition, wristWorldPosition);
-        console.log("relative wrist position:", wristLocalPosition);
+        const c = wristObject3D.localToWorld(wristLocalPosition);
+        console.log(c);
 
         // Now you have the absolute world position of the wrist in wristWorldPosition
-        console.log("Absolute wrist position:", wristWorldPosition);
                 // Proceed with wristObject3D if it exists
        // planePosition.copy(wristLocalPosition); // Use this line to place the plane directly on the hand
        // planePosition.y += 0.2;
-       planePosition.copy(handPoswristWorldPositionition); // Use this line to place the plane directly on the hand
+       planePosition.copy(c); // Use this line to place the plane directly on the hand
        // Or adjust slightly: 
        planePosition.y += 0.2;    
         } else {
