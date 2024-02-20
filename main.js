@@ -99,12 +99,8 @@ AFRAME.registerComponent('plane-follower', {
        // Or adjust slightly: 
        planePosition.y += 0.1;
 
-       const wristRotation = wristObject3D.rotation;
-       const planeOffset = new THREE.Vector3(0, 0.1, 0); // Adjust Z-axis value for desired height
-       const planeRotation = new THREE.Quaternion();
-       planeRotation.lookAt(wristPosition.add(planeOffset), wristPosition.add(planeOffset.clone().add(wristUp)));
-       this.el.object3D.rotation.copy(planeRotation);
-       const planePosition = wristPosition.add(planeOffset);
+        planeRotation.copy(wristObject3D.rotation)
+
         } else {
         // Handle the case where the hand isn't recognized yet
         console.log(document.querySelector('#leftHand').object3D.children);
