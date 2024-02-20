@@ -81,6 +81,7 @@ AFRAME.registerComponent('plane-follower', {
         // Proceed with wristObject3D if it exists
         planePosition.copy(wristObject3D.position); // Use this line to place the plane directly on the hand
         planePosition.y += 0.2;
+        console.log(wristObject3D.position);
       } else {
         // Handle the case where the hand isn't recognized yet
         console.log("Hand not recognized yet...");
