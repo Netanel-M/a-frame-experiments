@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-    <script src="./main.js?v=0.019"></script>
+    <script src="./main.js?v=0.0100"></script>
 </head>
 <body>
     <a-scene 
@@ -13,8 +13,8 @@
         <a-entity raycaster-listener id="raycaster" raycaster cursor="fuse: true; fuseTimeout: 500"></a-entity>
     </a-camera>
 
-    <a-entity   id="leftHand" hand-tracking-grab-controls="hand: left;" opacity="0.5">
-        <a-plane id="plane" plane-follower color="red" height="0.5" width="0.2" position="0 0.3 0" rotation="-90 0 0"></a-plane>
+    <a-entity plane-follower  id="leftHand" hand-tracking-grab-controls="hand: left;" opacity="0.5">
+        <a-plane id="plane"  color="red" height="0.5" width="0.2" position="0 0.3 0" rotation="-90 0 0"></a-plane>
     </a-entity>
 
     <a-entity  id="rightHand" hand-tracking-grab-controls="hand: right;"></a-entity>    

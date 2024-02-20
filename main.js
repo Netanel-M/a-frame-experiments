@@ -74,7 +74,7 @@ AFRAME.registerComponent('fall', {
 AFRAME.registerComponent('plane-follower', {
   init: function () {        
         const wristObject3D = document.querySelector('#leftHand').object3D.children[0].children.find(child => child.name === 'wrist');
-        wristObject3D.add(this.el);
+        wristObject3D.add(document.querySelector("#plane"));
       }    
 
   }
