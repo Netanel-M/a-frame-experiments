@@ -91,8 +91,11 @@ AFRAME.registerComponent('plane-follower', {
                 // Proceed with wristObject3D if it exists
        // planePosition.copy(wristLocalPosition); // Use this line to place the plane directly on the hand
        // planePosition.y += 0.2;
-       const x90Rotation = new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(1, 0, 0), -Math.PI / 2);
-       planeRotation.copy(wristObject3D.rotation).multiply(x90Rotation);
+       const eulerAngles = new THREE.Euler().setFromQuaternion(wristObject3D.rotation);
+       eulerAngles.x += -Math.PI / 2;
+       const planeQuaternion = new THREE.Quaternion().setFromEuler(eulerAngles);
+       planeRotation.copy(planeQuaternion)
+
         planePosition.copy(c); // Use this line to place the plane directly on the hand
        // Or adjust slightly: 
        planePosition.y += 0.1;
