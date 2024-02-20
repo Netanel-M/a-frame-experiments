@@ -100,7 +100,7 @@ AFRAME.registerComponent('plane-follower', {
        planePosition.y += 0.1;
 
 
-        this.el.object3D.lookAt(wristObject3D.position.x, wristObject3D.position.y, wristObject3D.position.z);
+        //this.el.object3D.lookAt(wristObject3D.position.x, wristObject3D.position.y, wristObject3D.position.z);
 
         } else {
         // Handle the case where the hand isn't recognized yet
