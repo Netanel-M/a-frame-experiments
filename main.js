@@ -91,7 +91,7 @@ AFRAME.registerComponent('plane-follower', {
         // Now you have the absolute world position of the wrist in wristWorldPosition
         console.log("Absolute wrist position:", wristWorldPosition);
                 // Proceed with wristObject3D if it exists
-        planePosition.copy(wristWorldPosition); // Use this line to place the plane directly on the hand
+        planePosition.copy(wristLocalPosition); // Use this line to place the plane directly on the hand
         planePosition.y += 0.2;
         console.log(wristWorldPosition);
       } else {
