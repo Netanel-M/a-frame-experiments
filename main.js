@@ -72,43 +72,13 @@ AFRAME.registerComponent('fall', {
 //   });
 
 AFRAME.registerComponent('plane-follower', {
-  tick: function (t, dt) {
-      const handPosition = document.querySelector('#leftHand').object3D.children[0];
-     // console.log( document.querySelector('#leftHand').object3D.children);
-     let planePosition = this.el.object3D.position;
-     let planeRotation = this.el.object3D.rotation;
-
-      if (document.querySelector('#leftHand').object3D.children.length > 0) {
-        
+  init: function () {        
         const wristObject3D = document.querySelector('#leftHand').object3D.children[0].children.find(child => child.name === 'wrist');
-        const scene = document.querySelector("a-scene")
-        // Convert wrist position from world space to the scene root's local space
-        const wristLocalPosition = new THREE.Vector3();
-        const c = wristObject3D.localToWorld(wristLocalPosition);
-        console.log(c);
-
-        // Now you have the absolute world position of the wrist in wristWorldPosition
-                // Proceed with wristObject3D if it exists
-       // planePosition.copy(wristLocalPosition); // Use this line to place the plane directly on the hand
-       // planePosition.y += 0.2;
-      //  planeRotation.copy(wristObject3D.rotation);
-      //   planeRotation.x += 90;
-      //   planeRotation.y += 60;
-
-        planePosition.copy(c); // Use this line to place the plane directly on the hand
-       // Or adjust slightly: 
-       planePosition.y += 0.1;
-
-        planeRotation.copy(wristObject3D.rotation)
-        planeRotation.rotateX(1.5708);
-
-        } else {
-        // Handle the case where the hand isn't recognized yet
-        console.log(document.querySelector('#leftHand').object3D.children);
+        wristObject3D.add(this.el);
       }    
 
   }
-});
+);
 
 AFRAME.registerComponent('raycaster-listener', {
   init: function () {
