@@ -76,7 +76,7 @@ AFRAME.registerComponent('plane-follower', {
       const handPosition = document.querySelector('#leftHand').object3D.children[0];
      // console.log( document.querySelector('#leftHand').object3D.children);
      let planePosition = this.el.object3D.position;
-      if (document.querySelector('#leftHand').object3D.children.length > 1) {
+      if (document.querySelector('#leftHand').object3D.children.length > 0) {
         
         const wristObject3D = document.querySelector('#leftHand').object3D.children[0].children.find(child => child.name === 'wrist');
         const scene = document.querySelector("a-scene")
