@@ -78,7 +78,7 @@ AFRAME.registerComponent('plane-follower', {
      let planePosition = this.el.object3D.position;
       if (document.querySelector('#leftHand').object3D.children.length > 1) {
         
-        const wristObject3D = document.querySelector('#leftHand').object3D.children[1].children.find(child => child.name === 'wrist');
+        const wristObject3D = document.querySelector('#leftHand').object3D.children[0].children.find(child => child.name === 'wrist');
         const scene = document.querySelector("a-scene")
         // Convert wrist position from world space to the scene root's local space
         const wristLocalPosition = new THREE.Vector3();
