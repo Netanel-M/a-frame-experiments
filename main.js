@@ -95,7 +95,7 @@ AFRAME.registerComponent('plane-follower', {
        // Or adjust slightly: 
        planePosition.y += 0.1;
        planeRotation.copy(wristObject3D.rotation);
-       planeRotation.x -= 90
+
 
         } else {
         // Handle the case where the hand isn't recognized yet
