@@ -77,11 +77,23 @@ AFRAME.registerComponent('plane-follower', {
      // console.log( document.querySelector('#leftHand').object3D.children);
      let planePosition = this.el.object3D.position;
       if (document.querySelector('#leftHand').object3D.children.length > 1) {
+        
         const wristObject3D = document.querySelector('#leftHand').object3D.children[1].children.find(child => child.name === 'wrist');
-        // Proceed with wristObject3D if it exists
-        planePosition.copy(wristObject3D.position); // Use this line to place the plane directly on the hand
+        const scene = document.querySelector("a-scene")
+        // Convert wrist position from world space to the scene root's local space
+        const wristLocalPosition = new THREE.Vector3();
+        wristObject3D.worldToLocal(wristLocalPosition);
+        
+        // Convert wrist position from scene root's local space to world space
+        const wristWorldPosition = new THREE.Vector3();
+        scene.object3D.localToWorld(wristLocalPosition, wristWorldPosition);
+        
+        // Now you have the absolute world position of the wrist in wristWorldPosition
+        console.log("Absolute wrist position:", wristWorldPosition);
+                // Proceed with wristObject3D if it exists
+        planePosition.copy(wristWorldPosition); // Use this line to place the plane directly on the hand
         planePosition.y += 0.2;
-        console.log(wristObject3D.position);
+        console.log(wristWorldPosition);
       } else {
         // Handle the case where the hand isn't recognized yet
         console.log("Hand not recognized yet...");
