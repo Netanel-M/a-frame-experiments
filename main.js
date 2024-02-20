@@ -99,7 +99,7 @@ AFRAME.registerComponent('plane-follower', {
        planePosition.y += 0.2;    
         } else {
         // Handle the case where the hand isn't recognized yet
-        console.log("Hand not recognized yet...");
+        console.log(document.querySelector('#leftHand').object3D.children);
       }    
 
   }
