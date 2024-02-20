@@ -70,15 +70,20 @@ AFRAME.registerComponent('fall', {
 //   setInterval(hideMeshes, 1000);  // Check every second
 
 //   });
-
 AFRAME.registerComponent('plane-follower', {
-  init: function () {        
-        const wristObject3D = document.querySelector('#leftHand').object3D.children[0].children.find(child => child.name === 'wrist');
-        wristObject3D.add(document.querySelector("#plane"));
-      }    
-
+  init: function () {
+    const wristObject3D = document.querySelector('#leftHand').object3D.children[0].children.find(child => child.name === 'wrist');
+    if (!wristObject3D) {
+      document.querySelector('#leftHand').object3D.addEventListener('childattached', (event) => {
+        if (event.detail.name === 'wrist') {
+          wristObject3D.add(document.querySelector("#plane"));
+        }
+      });
+    } else {
+      wristObject3D.add(document.querySelector("#plane"));
+    }
   }
-);
+});
 
 AFRAME.registerComponent('raycaster-listener', {
   init: function () {
