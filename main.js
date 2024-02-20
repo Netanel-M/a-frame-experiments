@@ -76,6 +76,8 @@ AFRAME.registerComponent('plane-follower', {
       const handPosition = document.querySelector('#leftHand').object3D.children[0];
      // console.log( document.querySelector('#leftHand').object3D.children);
      let planePosition = this.el.object3D.position;
+     let planeRotation = this.el.object3D.rotation;
+
       if (document.querySelector('#leftHand').object3D.children.length > 0) {
         
         const wristObject3D = document.querySelector('#leftHand').object3D.children[0].children.find(child => child.name === 'wrist');
@@ -91,7 +93,9 @@ AFRAME.registerComponent('plane-follower', {
        // planePosition.y += 0.2;
        planePosition.copy(c); // Use this line to place the plane directly on the hand
        // Or adjust slightly: 
-       planePosition.y += 0.2;    
+       planePosition.y += 0.1;
+       planeRotation.copy(wristObject3D.rotation);
+
         } else {
         // Handle the case where the hand isn't recognized yet
         console.log(document.querySelector('#leftHand').object3D.children);
